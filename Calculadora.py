@@ -22,7 +22,7 @@ power_button = sg.Button('Xⁿ', key='^')
 percentage_button = sg.Button('%', key='%')
 pi_button = sg.Button('π', key='π')
 pifull_button = sg.Button('πFULL', key='πf')
-list_box = sg.Listbox(values=[history], size=(50, 20), key='history')
+list_box = sg.Listbox(values=[history], size=(50, 20), key='list')
 exit_button = sg.Button('quit', key='quit')
 
 
@@ -64,8 +64,8 @@ while True:
             print("hesab= ", hesab)
             history.append(hesab + "\n")
             with open("history_calculadora", 'w') as file_history:   # todo: not stay history in list
-                file_history = history
-            Window['history'].update(file_history)
+                file_history.writelines(history)
+            Window['list'].Update(values=history)
         case "-":
             answer_car2 = "-"
             input_box.update(value="")
